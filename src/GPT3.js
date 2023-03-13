@@ -1,14 +1,11 @@
 import React from 'react'
 import { Configuration, OpenAIApi } from "openai";
 import { useState } from "react";
+import openai from './helpers/configuration';
 
 const GPT3 = () => {
 
-    // const configuration = new Configuration({
-  //   apiKey: process.env.Openai_Key,
-  // });
-
-  // const openai = new OpenAIApi(configuration);
+ 
 
   const [loading, setloading] = useState(false);
   const [result, setResult] = useState("");
@@ -24,7 +21,7 @@ const GPT3 = () => {
         method : "POST",
         headers :{
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + "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"
+          'Authorization': 'Bearer ' + "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"
 
         },
         body : JSON.stringify({

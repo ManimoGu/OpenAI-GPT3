@@ -1,13 +1,10 @@
 import "./App.css";
-import { Configuration, OpenAIApi } from "openai";
+import openai from "./helpers/configuration";
+
 import { useState } from "react";
 
 function App() {
-  const configuration = new Configuration({
-    apiKey: "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",
-  });
-
-  const openai = new OpenAIApi(configuration);
+ 
 
   const [loading, setloading] = useState(false);
   const [result, setResult] = useState("");
