@@ -1,54 +1,43 @@
-import { Configuration, OpenAIApi } from "openai";
 import "./App.css";
+import { Configuration, OpenAIApi } from "openai";
 import { useState } from "react";
 
 function App() {
-  // const configuration = new Configuration({
-  //   apiKey: process.env.Openai_Key,
-  // });
+  const configuration = new Configuration({
+    apiKey: "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",
+  });
 
-  // const openai = new OpenAIApi(configuration);
+  const openai = new OpenAIApi(configuration);
 
   const [loading, setloading] = useState(false);
   const [result, setResult] = useState("");
   const [prompt, setPrompt] = useState("");
 
-  
-
   const handelClick = async () => {
     setloading(true);
+
     try {
+      const response = await openai.createImage(
+        {
+          prompt : "A cute baby sea otter",
+          n : 1,
+          size : "1024x1024"
 
-      const requestinfo = {
-        method : "POST",
-        headers :{
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + "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"
-
-        },
-        body : JSON.stringify({
-          model: "text-davinci-003",
-          prompt: prompt,
-          temperature: 0.5,
-          max_tokens: 100,
-        })
-      }
-
-      const response = await fetch("https://api.openai.com/v1/completions", requestinfo)
-      const data = await response.json()
-     
-        
-      setResult(data.choices[0].text) 
+        }
        
+      );
+
+       setResult(response.data.data[0].url) ;
+      console.log(result)
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
 
     setloading(false);
   };
 
   return (
-    <main className="main">
+    <div className="App">
       <div className="w-2/4 max-auto">
         <textarea
           name=""
@@ -61,14 +50,17 @@ function App() {
           className="textarea"
         ></textarea>
 
-        <button className="btn" onClick={handelClick} disabled={loading || prompt.length === 0}>
-           {loading ? "Generating.." : "Generate"}
+        <button
+          className="btn"
+          onClick={handelClick}
+          disabled={loading || prompt.length === 0}
+        >
+          {loading ? "Generating.." : "Generate"}
         </button>
 
-        <pre className="result">{result}</pre>
-
+        <img src={result} alt="" />
       </div>
-    </main>
+    </div>
   );
 }
 
