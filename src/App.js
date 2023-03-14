@@ -16,7 +16,7 @@ function App() {
     try {
       const response = await openai.createImage(
         {
-          prompt : "A cute baby sea otter",
+          prompt : prompt,
           n : 1,
           size : "1024x1024"
 
