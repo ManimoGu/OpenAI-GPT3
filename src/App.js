@@ -1,4 +1,5 @@
 import "./App.css";
+import GPT3 from "./GPT3";
 import openai from "./helpers/configuration";
 
 import { useState } from "react";
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className="App">
+      <GPT3/>
       <div className="w-2/4 max-auto">
         <textarea
           name=""

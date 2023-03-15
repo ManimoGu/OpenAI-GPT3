@@ -11,7 +11,7 @@ const GPT3 = () => {
   const [result, setResult] = useState("");
   const [prompt, setPrompt] = useState("");
 
-  
+ 
 
   const handelClick = async () => {
     setloading(true);
@@ -21,7 +21,7 @@ const GPT3 = () => {
         method : "POST",
         headers :{
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + "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"
+          'Authorization': 'Bearer ' + process.env.REACT_APP_Openai_Key
 
         },
         body : JSON.stringify({
