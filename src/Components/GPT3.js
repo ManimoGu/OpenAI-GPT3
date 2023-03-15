@@ -1,7 +1,7 @@
 import React from 'react'
 import { Configuration, OpenAIApi } from "openai";
 import { useState } from "react";
-import openai from './helpers/configuration';
+import openai from '../helpers/configuration';
 
 const GPT3 = () => {
 
