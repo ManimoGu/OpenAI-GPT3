@@ -33,7 +33,7 @@ const Dall = () => {
     };
 
   return (
-    <div>
+    <div className='main'>
         
       <div className="w-2/4 max-auto">
         <textarea
